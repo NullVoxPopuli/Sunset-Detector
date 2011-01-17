@@ -1,3 +1,4 @@
+function [bigMatrix, sunsetOrNot] = imageFolderReader
 % Example of reading all the files in a given folder, e.g., TrainSunset. 
 % For the sunset detector, you should keep the images in 4 separate folders: train and test 
 % are separate, and the folder names tell you what the labels are (sunset = +1, non = -1) 
