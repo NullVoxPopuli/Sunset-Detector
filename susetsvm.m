@@ -4,11 +4,11 @@ function [right, wrong] = susetsvm()
     sunsetOrNot = [];
     
     % create the svm
-    gridSquareSize = 7; % 7x7 Grid
+    numOfGridSquares = 7; % 7x7 Grid
     colorChannels = 3; % LST
     colorFeatures = 2; % mean and variance
     featuresPerGridBox = colorChannels * colorFeatures;
-    numberOfFeatures = (gridSquareSize^2) * colorChannels * colorFeatures;
+    numberOfFeatures = (numOfGridSquares^2) * colorChannels * colorFeatures;
     
     net = svm(numberOfFeatures,'rbf',[featuresPerGridBox]);
     
@@ -18,7 +18,7 @@ function [right, wrong] = susetsvm()
         sunsetOrNot = loadStructFromFile('values.mat','sunsetOrNot'); 
     else
         %if the data doesn't exist, we should create it.
-        [bigMatrix, sunsetOrNot] = imageFolderReader();
+        [bigMatrix, sunsetOrNot] = imageFolderReader(featuresPerGridBox, numOfGridSquares, numberOfFeatures);
     end
 
 
