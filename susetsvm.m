@@ -32,6 +32,13 @@ function [right, wrong] = susetsvm()
 
     right = detected == sunsetOrNot(lastTrainer+1:size(sunsetOrNot),1);
     wrong = detected ~= sunsetOrNot(lastTrainer+1:size(sunsetOrNot),1);
+    
+    numRight = find(right > 0);
+    numWrong = find(wrong > 0);
+    
+    fprintf('\n\nOf the %d detected sunsets:', length(detected));
+    fprintf('\n\tThere are %d sunsets classified correctly', length(numRight));
+    fprintf('\n\tand %d sunsets that are not.\n\n', length(numWrong));
 
 %
 % Because .mat files are stored as structs, we use a helper
