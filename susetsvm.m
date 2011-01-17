@@ -36,9 +36,9 @@ function [right, wrong] = susetsvm()
     numRight = find(right > 0);
     numWrong = find(wrong > 0);
     
-    fprintf('\n\nOf the %d detected sunsets:', length(detected));
-    fprintf('\n\tThere are %d sunsets classified correctly', length(numRight));
-    fprintf('\n\tand %d sunsets that are not.\n\n', length(numWrong));
+    fprintf('\n\nOf the %d tested images:', length(detected));
+    fprintf('\n\tThere are %d discovered sunsets', length(numRight));
+    fprintf('\n\tand %d that are not sunsets.\n\n', length(numWrong));
 
 %
 % Because .mat files are stored as structs, we use a helper
