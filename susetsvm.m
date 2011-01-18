@@ -21,7 +21,7 @@ function [right, wrong] = susetsvm()
         [bigMatrix, sunsetOrNot] = imageFolderReader(featuresPerGridBox, numOfGridSquares, numberOfFeatures);
     end
 
-
+    
 
     lastTrainer = find(sunsetOrNot == 2);
     lastTrainer = lastTrainer(size(lastTrainer))-size(sunsetOrNot,1);
@@ -39,6 +39,13 @@ function [right, wrong] = susetsvm()
     fprintf('\n\nOf the %d tested images:', length(detected));
     fprintf('\n\tThere are %d discovered sunsets', length(numRight));
     fprintf('\n\tand %d that are not sunsets.\n\n', length(numWrong));
+    
+    [actualSunsets, actualNonSunsets] = countSunsetsAndNonSunsetsForTestData(sunsetOrNot);
+    
+    fprintf('\nThe Correct Answer is: (out of %d)', length(find(sunsetOrNot >= 3)));
+    fprintf('\n \t%d Sunsets \n \t%d NonSunsets\n\n', actualSunsets, actualNonSunsets);
+end
+
 
 %
 % Because .mat files are stored as structs, we use a helper
@@ -47,3 +54,9 @@ function [right, wrong] = susetsvm()
 function result = loadStructFromFile(fileName, environmentName) 
     tmp = load(fileName, environmentName);
     result = tmp.(environmentName); 
+end   
+
+function [actualSunsets, actualNonSunsets] = countSunsetsAndNonSunsetsForTestData(sunsetOrNot)
+    actualSunsets = length(find(sunsetOrNot == 3));
+    actualNonSunsets = length(find(sunsetOrNot == 4));
+end
