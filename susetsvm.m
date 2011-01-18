@@ -10,7 +10,7 @@ function [right, wrong] = susetsvm()
     featuresPerGridBox = colorChannels * colorFeatures;
     numberOfFeatures = (numOfGridSquares^2) * colorChannels * colorFeatures;
     
-    net = svm(numberOfFeatures,'rbf',[featuresPerGridBox]);
+    net = svm(numberOfFeatures,'rbf',[7]);
     
     if exist('values.mat', 'file')
         %load the data
