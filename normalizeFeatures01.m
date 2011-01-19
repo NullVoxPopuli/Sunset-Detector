@@ -1,5 +1,5 @@
-% This function normalizes the features to the range [0,1]. For each feature type, 
-% for example, Lmean, the min becomes 0 and max becomes 1. This isn't that robust, because 
+% This function normalizes the features to the range [0,1]. For each feature type,
+% for example, Lmean, the min becomes 0 and max becomes 1. This isn't that robust, because
 % a single outlier could compress the rest of the data too much.
 
 % The data is assumed to be in the the format specified in the paper.
